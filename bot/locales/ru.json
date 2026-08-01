@@ -1,0 +1,63 @@
+{
+  "common.back": "⬅️ Назад",
+  "common.main_menu": "🏠 Главное меню",
+  "common.cancel": "Отмена",
+
+  "start.choose_language": "Привет! 👋 Выбери язык интерфейса:",
+  "start.welcome": "Отлично! Я помогу тебе отслеживать продуктивность каждый день: ежедневный чек-ин, статистика, полезные гайды и тренировки.\n\nВыбирай раздел в меню ниже 👇",
+  "start.language_set": "Язык переключён на русский 🇷🇺",
+
+  "menu.title": "Главное меню. Что делаем?",
+  "menu.checkin": "✅ Чек-ин",
+  "menu.stats": "📊 Статистика",
+  "menu.guides": "📚 Гайды",
+  "menu.referral": "👥 Пригласить друга",
+  "menu.subscription": "⭐ Подписка",
+  "menu.settings": "⚙️ Настройки",
+  "menu.admin": "🛠 Админка",
+
+  "checkin.ask_score": "Оцени свою продуктивность сегодня — от 1 (совсем не задалось) до 10 (идеальный день):",
+  "checkin.ask_note": "Хочешь коротко описать день? Отправь текст сообщением, либо нажми «Пропустить».",
+  "checkin.skip_note": "⏭ Пропустить",
+  "checkin.already_done": "Ты уже отметился сегодня ✅\n\nОценка дня: {score}/10\n🔥 Текущий стрик: {streak} дн.\n\nВозвращайся завтра!",
+  "checkin.saved": "Готово, день записан! 🎉\n\nОценка: {score}/10\n🔥 Стрик: {streak} дн.\n📈 Средний балл за 7 дней: {avg7}",
+  "checkin.referral_bonus_note": "\n\n🎁 Другу, который тебя пригласил, начислено {days} дн. подписки — спасибо за первый чек-ин!",
+
+  "stats.button_history": "📅 История чек-инов",
+  "stats.no_data": "Пока нет ни одного чек-ина. Нажми «✅ Чек-ин» в главном меню и начни отслеживать продуктивность прямо сейчас!",
+  "stats.body": "📊 Твоя статистика\n\n🔥 Текущий стрик: {current_streak} дн.\n🏆 Лучший стрик: {best_streak} дн.\n✅ Всего чек-инов: {total}\n📈 Средний балл (7 дней): {avg7}\n📈 Средний балл (30 дней): {avg30}\n📅 Последний чек-ин: {last_date}",
+  "stats.history_title": "📅 История чек-инов (стр. {page}/{pages})",
+  "stats.history_empty": "История пуста.",
+  "stats.history_entry": "{date} — {score}/10{note}",
+
+  "guides.title": "Выбери раздел библиотеки:",
+  "guides.category_guide": "📖 Гайды",
+  "guides.category_training": "🏋️ Тренировки",
+  "guides.category_lecture": "🎓 Лекции",
+  "guides.empty": "Пока здесь пусто — загляни позже 👀",
+  "guides.premium_locked": "🔒 «{title}» доступен по подписке.\n\nОформи подписку, чтобы открыть все премиум-материалы.",
+  "guides.subscribe_button": "⭐ Оформить подписку",
+  "guides.sent_caption": "{title}",
+
+  "referral.title": "👥 Реферальная программа\n\nПриглашай друзей — как только приглашённый сделает первый чек-ин, тебе начислится {reward_days} дн. подписки!\n\n🔗 Твоя ссылка:\n{link}\n\n✅ Успешных приглашений: {count}",
+  "referral.share_button": "📤 Поделиться ссылкой",
+  "referral.share_text": "Присоединяйся, трекаем продуктивность вместе! 💪",
+
+  "subscription.title": "⭐ Подписка открывает доступ ко всем премиум-гайдам и тренировкам.\n\nВыбери тариф:",
+  "subscription.active_until": "✅ У тебя активна подписка до {date} (UTC).",
+  "subscription.no_plans": "Пока нет доступных тарифов — загляни позже.",
+  "subscription.plan_button": "{title} — {price} ⭐",
+  "subscription.invoice_description": "Доступ ко всем премиум-гайдам, тренировкам и лекциям на {days} дн.",
+  "subscription.success": "Оплата прошла успешно! 🎉\n\nПодписка активна до {date} (UTC).",
+
+  "settings.title": "⚙️ Настройки",
+  "settings.lang_button": "🌐 Язык: Русский",
+  "settings.reminder_button": "⏰ Напоминание: {time}",
+  "settings.notifications_on": "🔔 Уведомления: Включены",
+  "settings.notifications_off": "🔕 Уведомления: Выключены",
+  "settings.choose_time": "Выбери время ежедневного напоминания о чек-ине ({timezone}):",
+  "settings.reminder_off_label": "Выключить",
+  "settings.reminder_set": "Готово! Буду напоминать в {time} ({timezone}).",
+  "settings.reminder_disabled": "Напоминания отключены.",
+  "settings.lang_switched": "Готово ✅"
+}

@@ -1,0 +1,63 @@
+{
+  "common.back": "⬅️ Back",
+  "common.main_menu": "🏠 Main menu",
+  "common.cancel": "Cancel",
+
+  "start.choose_language": "Hi! 👋 Choose your interface language:",
+  "start.welcome": "Great! I'll help you track your productivity every day: daily check-ins, stats, useful guides and workouts.\n\nPick a section from the menu below 👇",
+  "start.language_set": "Language switched to English 🇬🇧",
+
+  "menu.title": "Main menu. What would you like to do?",
+  "menu.checkin": "✅ Check-in",
+  "menu.stats": "📊 Stats",
+  "menu.guides": "📚 Guides",
+  "menu.referral": "👥 Invite a friend",
+  "menu.subscription": "⭐ Subscription",
+  "menu.settings": "⚙️ Settings",
+  "menu.admin": "🛠 Admin panel",
+
+  "checkin.ask_score": "Rate your productivity today — from 1 (rough day) to 10 (perfect day):",
+  "checkin.ask_note": "Want to add a short note about your day? Send it as a message, or tap \"Skip\".",
+  "checkin.skip_note": "⏭ Skip",
+  "checkin.already_done": "You've already checked in today ✅\n\nToday's score: {score}/10\n🔥 Current streak: {streak} days\n\nCome back tomorrow!",
+  "checkin.saved": "Done, your day is logged! 🎉\n\nScore: {score}/10\n🔥 Streak: {streak} days\n📈 7-day average: {avg7}",
+  "checkin.referral_bonus_note": "\n\n🎁 The friend who invited you just got {days} days of subscription for your first check-in!",
+
+  "stats.button_history": "📅 Check-in history",
+  "stats.no_data": "No check-ins yet. Tap \"✅ Check-in\" in the main menu and start tracking your productivity right now!",
+  "stats.body": "📊 Your stats\n\n🔥 Current streak: {current_streak} days\n🏆 Best streak: {best_streak} days\n✅ Total check-ins: {total}\n📈 7-day average: {avg7}\n📈 30-day average: {avg30}\n📅 Last check-in: {last_date}",
+  "stats.history_title": "📅 Check-in history (page {page}/{pages})",
+  "stats.history_empty": "History is empty.",
+  "stats.history_entry": "{date} — {score}/10{note}",
+
+  "guides.title": "Choose a library section:",
+  "guides.category_guide": "📖 Guides",
+  "guides.category_training": "🏋️ Workouts",
+  "guides.category_lecture": "🎓 Lectures",
+  "guides.empty": "Nothing here yet — check back later 👀",
+  "guides.premium_locked": "🔒 \"{title}\" is available with a subscription.\n\nSubscribe to unlock all premium materials.",
+  "guides.subscribe_button": "⭐ Subscribe",
+  "guides.sent_caption": "{title}",
+
+  "referral.title": "👥 Referral program\n\nInvite friends — once your friend makes their first check-in, you get {reward_days} days of subscription!\n\n🔗 Your link:\n{link}\n\n✅ Successful invites: {count}",
+  "referral.share_button": "📤 Share link",
+  "referral.share_text": "Join me, let's track productivity together! 💪",
+
+  "subscription.title": "⭐ Subscription unlocks all premium guides and workouts.\n\nChoose a plan:",
+  "subscription.active_until": "✅ Your subscription is active until {date} (UTC).",
+  "subscription.no_plans": "No plans available right now — check back later.",
+  "subscription.plan_button": "{title} — {price} ⭐",
+  "subscription.invoice_description": "Access to all premium guides, workouts and lectures for {days} days.",
+  "subscription.success": "Payment successful! 🎉\n\nSubscription active until {date} (UTC).",
+
+  "settings.title": "⚙️ Settings",
+  "settings.lang_button": "🌐 Language: English",
+  "settings.reminder_button": "⏰ Reminder: {time}",
+  "settings.notifications_on": "🔔 Notifications: On",
+  "settings.notifications_off": "🔕 Notifications: Off",
+  "settings.choose_time": "Choose a time for the daily check-in reminder ({timezone}):",
+  "settings.reminder_off_label": "Turn off",
+  "settings.reminder_set": "Done! I'll remind you at {time} ({timezone}).",
+  "settings.reminder_disabled": "Reminders turned off.",
+  "settings.lang_switched": "Done ✅"
+}
