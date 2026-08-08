@@ -1,6 +1,6 @@
 # Productivity Tracker Bot
 
-**Language:** 🇷🇺 [Русский](README.md) · 🇬🇧 [English](README.en.md)
+**Language:** 🇬🇧 [English](README.md) · 🇷🇺 [Русский](README.ru.md)
 
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB)
 ![aiogram](https://img.shields.io/badge/aiogram-3-2CA5E0)
@@ -8,82 +8,80 @@
 ![Tests](https://img.shields.io/badge/tests-pytest-0A9EDC)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-Telegram-трекер продуктивности, построенный как полноценный продукт внутри
-Telegram.
+A Telegram productivity tracker designed as a complete product inside Telegram.
 
-Проект объединяет ежедневные check-in, отслеживание прогресса, статистику,
-премиум-контент, подписки, оплату через Telegram Stars, реферальную систему,
-напоминания и административный интерфейс в одной системе.
+The project combines daily check-ins, progress tracking, statistics, premium
+content, subscriptions, Telegram Stars payments, referrals, reminders and an
+administrative interface in one system.
 
-> В репозитории представлена демонстрационная версия с тестовыми данными и
-> демонстрационным контентом. Основная архитектура и продуктовая логика
-> готовы для адаптации под конкретный продукт, нишу и бренд.
-
----
-
-## Обзор
-
-Основной пользовательский сценарий построен вокруг ежедневного check-in.
-
-Пользователь оценивает свой день от 1 до 10 и при необходимости добавляет
-короткую заметку. Бот сохраняет результат и использует накопленную историю
-для формирования персональной статистики.
-
-В интерфейсе Telegram доступны:
-
-- ежедневные check-in
-- текущий и лучший streak
-- статистика за 7 и 30 дней
-- история check-in
-- категоризированная библиотека PDF-материалов
-- премиум-подписки
-- реферальная система
-- автоматические напоминания
-- русский и английский языки
-
-Весь пользовательский сценарий работает внутри Telegram без отдельного
-веб-приложения.
+> This repository contains a demonstration version with test data and demo
+> content. The core architecture and product mechanics are designed to be
+> adapted to a specific product, niche and brand.
 
 ---
 
-## Трекинг продуктивности
+## Overview
 
-Основная механика делает акцент на регулярности, а не на отдельных оценках
-дня.
+The main user flow is built around a daily check-in.
 
-Каждый выполненный check-in обновляет историю пользователя и позволяет
-системе рассчитывать текущий и лучший streak, средние значения и статистику
-за определенные периоды.
+Users rate their day from 1 to 10 and can optionally add a short note. The
+bot stores the result and uses the accumulated history to build a personal
+progress overview.
 
-Логика трекинга отделена от Telegram handlers, поэтому бизнес-правила не
-зависят напрямую от интерфейса.
+The Telegram interface includes:
 
-Та же структура может быть адаптирована для других регулярных активностей,
-например тренировок, обучения или формирования привычек.
+- daily check-ins
+- current and best streaks
+- 7-day and 30-day statistics
+- check-in history
+- a categorized PDF library
+- premium subscriptions
+- a referral system
+- automated reminders
+- Russian and English localization
 
----
-
-## Контент и премиум-доступ
-
-В боте предусмотрена категоризированная библиотека PDF-материалов.
-
-Контент может быть разделен на бесплатный и премиум-доступ, а наличие
-активной подписки определяет, какие материалы доступны пользователю.
-
-Контент и настройки подписок связаны с административной частью, поэтому
-управление продуктом не требует изменения пользовательского интерфейса.
-
-Таким образом, бот может выступать не только как трекер, но и как основа
-для подписочного контентного продукта.
+The complete user experience is handled inside Telegram without a separate
+web application.
 
 ---
 
-## Подписки и Telegram Stars
+## Productivity Tracking
 
-Премиум-доступ монетизируется непосредственно через Telegram Stars.
+The core mechanic focuses on consistency rather than isolated daily scores.
 
-Пользователь выбирает тариф внутри бота и проходит стандартный платежный
-сценарий Telegram:
+Each completed check-in updates the user's history and allows the system to
+calculate current and best streaks, averages and period-based statistics.
+
+The tracking logic is separated from the Telegram handlers, keeping the
+business rules independent from the interface.
+
+The same structure can also be adapted to other recurring activities such as
+workouts, learning or habit tracking.
+
+---
+
+## Content & Premium Access
+
+The bot includes a categorized library of PDF materials.
+
+Content can be divided between free and premium access, with subscription
+status determining which materials are available to the user.
+
+Content and subscription settings are connected to the administrative layer,
+allowing the product to be managed without changing the user-facing
+interface.
+
+This makes the bot more than a simple tracker: the same system can support a
+subscription-based content product.
+
+---
+
+## Subscriptions & Telegram Stars
+
+Premium access is monetized directly through Telegram Stars.
+
+The user selects a subscription plan inside the bot and proceeds through
+Telegram's payment flow:
 
 ```text
 send_invoice
@@ -93,115 +91,116 @@ pre_checkout_query
 successful_payment
 ```
 
-Проект поддерживает несколько тарифов, параметры которых хранятся в базе
-данных и управляются через административный интерфейс.
+The project supports multiple plans, with their parameters stored in the
+database and managed through the administrative interface.
 
-Весь процесс покупки остается внутри Telegram.
+The entire purchase flow remains inside Telegram.
 
-## Реферальная система
+## Referral System
 
-Каждый пользователь получает персональную реферальную ссылку.
+Each user receives a personal referral link.
 
-Когда новый пользователь приходит по этой ссылке, система связывает его с
-пригласившим и отслеживает необходимое целевое действие.
+When a new user joins through that link, the system associates the referral
+with its owner and tracks the required conversion event.
 
-В текущей реализации успешная реферальная конверсия дает дополнительные дни
-премиум-доступа.
+In the current implementation, a successful referral grants additional
+premium days.
 
-Реферальная логика вынесена в отдельный сервис, а не размещена
-непосредственно внутри Telegram handlers.
+The referral logic is isolated in a dedicated service rather than being
+placed directly inside the Telegram handlers.
 
-## Административная часть
+## Administration
 
-В проекте предусмотрен отдельный административный интерфейс, который также
-работает внутри Telegram.
+The project includes a dedicated admin interface that also runs inside
+Telegram.
 
-Администратор может:
+Administrators can:
 
-- отслеживать DAU, WAU и MAU
-- смотреть доход и конверсию
-- управлять пользователями
-- выдавать и отзывать премиум-доступ
-- блокировать пользователей
-- создавать и редактировать контент
-- управлять тарифами
-- запускать рассылки
+- monitor DAU, WAU and MAU
+- track revenue and conversion
+- manage users
+- grant or revoke premium access
+- block users
+- create and edit content
+- manage subscription plans
+- send broadcasts
 
-Для этих операций не требуется отдельная веб-панель.
+No separate web dashboard is required for these operations.
 
-Telegram используется одновременно как пользовательский интерфейс и рабочая
-среда для управления самим продуктом.
+This allows Telegram to serve as both the customer-facing interface and the
+internal product management environment.
 
-## Автоматизация
+## Automation
 
-Регулярные задачи выполняются через планировщик.
+Recurring tasks are handled by a scheduler.
 
-Бот проверяет пользователей, которые еще не выполнили ежедневный check-in, и
-может автоматически отправлять им напоминания.
+The bot checks which users have not completed their daily check-in and can
+automatically send them reminders.
 
-Это позволяет поддерживать ежедневный сценарий без постоянного ручного
-контроля со стороны администратора.
+This keeps the daily workflow running without requiring manual intervention
+from an administrator.
 
-## Мультиязычность
+## Localization
 
-Интерфейс поддерживает русский и английский языки.
+The interface supports both Russian and English.
 
-Локализация отделена от основной логики приложения, поэтому тексты
-интерфейса проще поддерживать, а дополнительные языки можно добавлять без
-переписывания основных пользовательских сценариев.
+Localization is kept separate from the main application logic, which makes
+interface copy easier to maintain and allows additional languages to be
+introduced without rewriting the core user flows.
 
-## Архитектура
+## Architecture
 
-Проект разделен на отдельные слои по основным зонам ответственности:
+The project is organized into separate layers for the main areas of
+responsibility:
 
 ```
 bot/
-├── database/       # модели базы данных и работа с данными
-├── handlers/       # пользовательские и административные сценарии
-├── keyboards/      # интерфейс Telegram
-├── middlewares/    # сессии БД и пользовательский контекст
-├── services/       # бизнес-логика
-├── locales/        # локализация RU / EN
-├── states/         # состояния диалогов
-├── config.py       # конфигурация
-└── main.py         # точка запуска
+├── database/       # database models and data access
+├── handlers/       # user and admin flows
+├── keyboards/      # Telegram interface
+├── middlewares/    # database sessions and user context
+├── services/       # business logic
+├── locales/        # RU / EN localization
+├── states/         # conversation states
+├── config.py       # configuration
+└── main.py         # application entry point
 
-sample_guides/      # демонстрационные PDF-материалы
-scripts/            # вспомогательные скрипты
-tests/              # автоматические тесты
+sample_guides/      # demo PDF materials
+scripts/            # utility scripts
+tests/              # automated tests
 ```
 
-Бизнес-логика платежей, рефералов, трекинга и других продуктовых механик
-отделена от Telegram handlers.
+Business logic for payments, referrals, tracking and other product
+mechanics is separated from the Telegram handlers.
 
-Интерфейсный слой отвечает за взаимодействие с пользователем, а отдельные
-сервисы работают с самой логикой продукта.
+This keeps the interface layer focused on user interaction while the
+underlying services handle the actual product logic.
 
-## Тестирование
+## Testing
 
-Ключевая бизнес-логика покрыта автоматическими тестами.
+Key business logic is covered by automated tests.
 
-Тесты проверяют:
+The test suite includes checks for:
 
-- расчет streak
-- реферальные бонусы
-- консистентность переводов RU / EN
-- логику продления подписки
+- streak calculation
+- referral rewards
+- RU / EN translation consistency
+- subscription extension logic
 
-Для тестирования используется `pytest`.
+The project uses `pytest` for testing.
 
-## Деплой
+## Deployment
 
-Проект подготовлен как для прямого запуска на сервере, так и для запуска
-через Docker.
+The project is prepared for deployment both directly on a server and through
+Docker.
 
-Бот использует long polling, поэтому самому Telegram-приложению не требуется
-отдельный домен или SSL-сертификат.
+The bot uses long polling, so the Telegram application itself does not
+require a separate domain or SSL certificate.
 
-В репозитории присутствует Docker-конфигурация и отдельная документация по
-развертыванию.
+The repository includes Docker configuration and separate deployment
+documentation.
 
-## Технологии
+## Technology
 
 ### Backend
 
@@ -211,29 +210,28 @@ tests/              # автоматические тесты
 - SQLite
 - Pydantic Settings
 
-### Продуктовая логика
+### Product
 
 - Telegram Stars
 - APScheduler
-- система подписок
-- реферальная система
-- двуязычный интерфейс
-- библиотека PDF-контента
+- subscription system
+- referral system
+- bilingual interface
+- PDF content library
 
-### Инфраструктура
+### Infrastructure
 
 - Docker
 - Docker Compose
 - pytest
 
-## Результат
+## Project Result
 
-В результате получился полноценный Telegram-продукт, а не набор отдельных
-команд бота.
+The result is a complete Telegram-based product rather than a collection of
+isolated bot commands.
 
-Пользовательский интерфейс, логика трекинга, контент, монетизация, рефералы,
-автоматизация и административное управление объединены в одну систему.
+The project brings together the user experience, tracking logic, content,
+monetization, referrals, automation and administration into one system.
 
-Архитектура позволяет адаптировать проект под другую нишу, изменив
-брендинг, контент, основную метрику, модель подписки и пользовательские
-сценарии.
+The architecture can be adapted to another niche by changing the branding,
+content, core metric, subscription model and user flows.
