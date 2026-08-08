@@ -1,167 +1,237 @@
 # Productivity Tracker Bot
 
-![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
+**Language:** 🇷🇺 [Русский](README.md) · 🇬🇧 [English](README.en.md)
+
+![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB)
 ![aiogram](https://img.shields.io/badge/aiogram-3-2CA5E0)
-![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0%20async-red)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0%20async-D71F00)
 ![Tests](https://img.shields.io/badge/tests-pytest-0A9EDC)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-**Language:** [🇷🇺 Русский](README.md) · 🇬🇧 English
+A Telegram productivity tracker designed as a complete product inside Telegram.
 
-A Telegram bot with a fully inline-button UI for daily productivity tracking:
-check-ins, stats, a PDF content library, a referral program, paid subscriptions via
-**Telegram Stars**, and a complete admin panel that lives entirely inside Telegram —
-no external web page required.
+The project combines daily check-ins, progress tracking, statistics, premium
+content, subscriptions, Telegram Stars payments, referrals, reminders and an
+administrative interface in one system.
 
-The project is built as a ready-to-adapt template: the check-in mechanic, content,
-pricing plans and branding can all be tailored to any niche — fitness coaching,
-online courses, mentorship programs, subscription communities, and more.
+> This repository contains a demonstration version with test data and demo
+> content. The core architecture and product mechanics are designed to be
+> adapted to a specific product, niche and brand.
 
-> ⚠️ What's shown below is a demo deployment for presentation purposes: a test bot
-> and test admin panel with sample data. In a real engagement the bot is deployed on
-> the client's own server (Docker/VPS) with their branding, content and pricing.
+---
 
-## What it looks like
+## Overview
 
-Users don't install anything — the whole experience happens through inline buttons
-right inside the chat with the bot.
+The main user flow is built around a daily check-in.
 
-<img src="screenshots/main_menu.jpg" width="420" alt="Bot main menu">
+Users rate their day from 1 to 10 and can optionally add a short note. The
+bot stores the result and uses the accumulated history to build a personal
+progress overview.
 
-## Features
+The Telegram interface includes:
 
-### ✅ Daily check-in
+- daily check-ins
+- current and best streaks
+- 7-day and 30-day statistics
+- check-in history
+- a categorized PDF library
+- premium subscriptions
+- a referral system
+- automated reminders
+- Russian and English localization
 
-Rate the day from 1 to 10, add a short note, automatic streak and 7/30-day average
-calculation. The mechanic can easily be swapped for any core business metric —
-workouts, study progress, habits, and so on.
+The complete user experience is handled inside Telegram without a separate
+web application.
 
-### 📊 Stats
+---
 
-Current and best streak, average scores, paginated check-in history — users see
-their progress without ever leaving Telegram.
+## Productivity Tracking
 
-### 📚 Content library
+The core mechanic focuses on consistency rather than isolated daily scores.
 
-Guides, workouts and lectures as PDFs, organized by category; part of the content
-can be gated behind a subscription — a ready-made paywall mechanism.
+Each completed check-in updates the user's history and allows the system to
+calculate current and best streaks, averages and period-based statistics.
 
-<img src="screenshots/guides_library.jpg" width="420" alt="Content library">
+The tracking logic is separated from the Telegram handlers, keeping the
+business rules independent from the interface.
 
-### 👥 Referral program
+The same structure can also be adapted to other recurring activities such as
+workouts, learning or habit tracking.
 
-A personal link for every user, bonus subscription days for inviting a friend —
-built-in viral growth with zero extra setup.
+---
 
-<img src="screenshots/referral_program.jpg" width="420" alt="Referral program">
+## Content & Premium Access
 
-### ⭐ Monetization via Telegram Stars
+The bot includes a categorized library of PDF materials.
 
-Multiple pricing plans, a ready-made payment flow (`send_invoice` →
-`pre_checkout_query` → `successful_payment`) — no third-party payment provider or
-processing fees. Plans are edited straight from the admin panel, no code changes needed.
+Content can be divided between free and premium access, with subscription
+status determining which materials are available to the user.
 
-<img src="screenshots/subscription_plans.jpg" width="420" alt="Subscription plans">
+Content and subscription settings are connected to the administrative layer,
+allowing the product to be managed without changing the user-facing
+interface.
 
-### 🛠 Admin panel inside the bot
+This makes the bot more than a simple tracker: the same system can support a
+subscription-based content product.
 
-Analytics (DAU/WAU/MAU, revenue, conversion, top content), user management (grant
-premium, ban), full CRUD for content and pricing plans, mass broadcast — all without
-a separate web panel that would need to be hosted and secured on its own.
+---
 
-<img src="screenshots/admin_panel.jpg" width="420" alt="Admin panel">
+## Subscriptions & Telegram Stars
 
-### 🌐 Multi-language
+Premium access is monetized directly through Telegram Stars.
 
-Switchable RU/EN interface for end users; adding another language is straightforward.
+The user selects a subscription plan inside the bot and proceeds through
+Telegram's payment flow:
 
-### ⏰ Reminders
-
-Automatic daily push to anyone who hasn't checked in yet (APScheduler).
-
-## Stack
-
-Python 3.11+, aiogram 3, SQLAlchemy 2.0 (async) + SQLite (migrates painlessly to
-Postgres/MySQL as load grows), APScheduler, pydantic-settings. The bot runs on long
-polling, so it needs no domain or SSL certificate — it deploys with a single command
-on any server or container.
-
-## Quick start (local)
-
-```bash
-python -m venv .venv
-.venv\Scripts\activate      # Windows
-pip install -r requirements.txt
-copy .env.example .env
+```text
+send_invoice
+      ↓
+pre_checkout_query
+      ↓
+successful_payment
 ```
 
-Fill in `.env`:
+The project supports multiple plans, with their parameters stored in the
+database and managed through the administrative interface.
 
-1. `BOT_TOKEN` — get one from [@BotFather](https://t.me/BotFather) via `/newbot`.
-2. `ADMIN_IDS` — your numeric Telegram ID (find it via [@userinfobot](https://t.me/userinfobot)).
-   Multiple admins can be comma-separated.
-3. `TIMEZONE` — timezone used for daily reminders (defaults to `Europe/Moscow`).
+The entire purchase flow remains inside Telegram.
 
-Run it:
+## Referral System
 
-```bash
-python -m bot.main
-```
+Each user receives a personal referral link.
 
-On first run the bot creates its database and seeds demo content (one item per
-category) plus 3 subscription plans, so the library and subscription screens aren't
-empty even without manual setup.
+When a new user joins through that link, the system associates the referral
+with its owner and tracks the required conversion event.
 
-## Running with Docker
+In the current implementation, a successful referral grants additional
+premium days.
 
-```bash
-copy .env.example .env
-docker compose up -d --build
-```
+The referral logic is isolated in a dedicated service rather than being
+placed directly inside the Telegram handlers.
 
-Ready to deploy to any VPS/cloud — see [DEPLOYMENT.md](DEPLOYMENT.md) for details.
+## Administration
 
-## Becoming an admin
+The project includes a dedicated admin interface that also runs inside
+Telegram.
 
-Add your Telegram ID to `ADMIN_IDS` in `.env` and restart the bot. A "🛠 Admin panel"
-button then appears in the main menu (also available via the `/admin` command). From
-there you can: view analytics, grant/revoke premium, ban users, manage content and
-pricing plans, and send broadcasts — no developer involvement needed.
+Administrators can:
 
-## Tests
+- monitor DAU, WAU and MAU
+- track revenue and conversion
+- manage users
+- grant or revoke premium access
+- block users
+- create and edit content
+- manage subscription plans
+- send broadcasts
 
-```bash
-pip install -r requirements-dev.txt
-pytest
-```
+No separate web dashboard is required for these operations.
 
-Tests cover the core logic: streak calculation, referral rewards, ru/en translation
-consistency, and subscription-extension math.
+This allows Telegram to serve as both the customer-facing interface and the
+internal product management environment.
 
-## Project structure
+## Automation
+
+Recurring tasks are handled by a scheduler.
+
+The bot checks which users have not completed their daily check-in and can
+automatically send them reminders.
+
+This keeps the daily workflow running without requiring manual intervention
+from an administrator.
+
+## Localization
+
+The interface supports both Russian and English.
+
+Localization is kept separate from the main application logic, which makes
+interface copy easier to maintain and allows additional languages to be
+introduced without rewriting the core user flows.
+
+## Architecture
+
+The project is organized into separate layers for the main areas of
+responsibility:
 
 ```
 bot/
-  main.py            # entry point
-  config.py           # settings loaded from .env
-  database/            # SQLAlchemy models + repositories
-  handlers/              # user-facing and admin-panel handlers
-  keyboards/               # inline keyboards
-  middlewares/               # DB session, user context, activity tracking
-  services/                    # streaks, i18n, referrals, Stars, scheduler
-  locales/                       # ru.json / en.json
-sample_guides/           # demo PDF content
-scripts/                  # demo PDF generator, DB seeder
-screenshots/               # screenshots used in this README
-tests/                      # unit tests (pytest)
+├── database/       # database models and data access
+├── handlers/       # user and admin flows
+├── keyboards/      # Telegram interface
+├── middlewares/    # database sessions and user context
+├── services/       # business logic
+├── locales/        # RU / EN localization
+├── states/         # conversation states
+├── config.py       # configuration
+└── main.py         # application entry point
+
+sample_guides/      # demo PDF materials
+scripts/            # utility scripts
+tests/              # automated tests
 ```
 
-## Possible extensions for a specific project
+Business logic for payments, referrals, tracking and other product
+mechanics is separated from the Telegram handlers.
 
-- Custom branding, copy and content for the client's niche.
-- A different core metric instead of "productivity" (weight, workouts, study
-  progress, etc.).
-- Per-user timezones.
-- A web version of the admin panel, if access outside Telegram is needed.
-- Refunds for Stars payments, promo codes, a trial period.
-- Alembic migrations and a move to Postgres as the project scales.
+This keeps the interface layer focused on user interaction while the
+underlying services handle the actual product logic.
+
+## Testing
+
+Key business logic is covered by automated tests.
+
+The test suite includes checks for:
+
+- streak calculation
+- referral rewards
+- RU / EN translation consistency
+- subscription extension logic
+
+The project uses `pytest` for testing.
+
+## Deployment
+
+The project is prepared for deployment both directly on a server and through
+Docker.
+
+The bot uses long polling, so the Telegram application itself does not
+require a separate domain or SSL certificate.
+
+The repository includes Docker configuration and separate deployment
+documentation.
+
+## Technology
+
+### Backend
+
+- Python 3.11+
+- aiogram 3
+- SQLAlchemy 2.0 Async
+- SQLite
+- Pydantic Settings
+
+### Product
+
+- Telegram Stars
+- APScheduler
+- subscription system
+- referral system
+- bilingual interface
+- PDF content library
+
+### Infrastructure
+
+- Docker
+- Docker Compose
+- pytest
+
+## Project Result
+
+The result is a complete Telegram-based product rather than a collection of
+isolated bot commands.
+
+The project brings together the user experience, tracking logic, content,
+monetization, referrals, automation and administration into one system.
+
+The architecture can be adapted to another niche by changing the branding,
+content, core metric, subscription model and user flows.
